@@ -1,4 +1,4 @@
-//create的用法
+console.log(document.createElement((`<div>text</div>`)));//create的用法
 const li=dom.create(`<div>text</div>`);
 
 //after和before的用法
