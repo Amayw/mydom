@@ -46,3 +46,78 @@ dom.empty=(node)=>{
     }
     return array;
 }
+
+//改
+dom.attr=(node,name,flag)=>{
+    if(flag){
+        //写
+        node.setAttribute(name,flag);
+    }else if(flag===undefined){
+        //读
+        return node.getAttribute(name);
+    }
+}
+
+dom.text=(node,string)=>{
+    if(string){
+        if('innerText' in node){
+            node.innerText=string;
+        }else{
+            node.textContent=string;
+        }
+    }else if(string===undefined){
+        if('innerText' in node){
+            return node.innerText;
+        }else{
+            return node.textContent;
+        }
+    }
+}
+
+dom.html=(node,html)=>{
+    if(html){
+        //写
+        node.innerHTML=html;
+    }else if(html===undefined){
+        //读
+        return node.innerHTML;
+    }
+}
+
+dom.style=(node,attr,value)=>{
+    if(attr instanceof Object){
+        //如果第二个参数是对象
+        for(let i in attr){
+            node.style[i]=attr[i];
+        }
+    }else if(typeof attr === 'string'){
+        //如果是字符串
+        if(value===undefined){
+            //如果没有第三个参数
+            return node.style[attr];
+        }else if(value){
+            //如果有第三个参数
+            node.style[attr]=value;
+        }
+    }
+}
+
+dom.class={
+    add(node,classname){
+        node.classList.add(classname);
+    },
+    remove(node,classname){
+        node.classList.remove(classname);
+    },
+    contains(node,classname){
+        return node.classList.contains(classname);
+    }
+}
+
+dom.on=(node,event,fn)=>{
+    node.addEventListener(event,fn);
+}
+
+dom.off=(node,event,fn)=>{
+    node.removeEventListener(event,fn);
+}
