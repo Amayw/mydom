@@ -121,3 +121,46 @@ dom.on=(node,event,fn)=>{
 dom.off=(node,event,fn)=>{
     node.removeEventListener(event,fn);
 }
+
+//查
+dom.find=(selector)=>{
+    return document.querySelector(selector);
+}
+
+dom.findAll=(selector)=>{
+    return document.querySelectorAll(selector);
+}
+
+dom.parent=(node)=>{
+    return node.parentNode;
+}
+
+dom.children=(node)=>{
+    return node.children;
+}
+
+dom.siblings=(node)=>{
+    let arr=Array.from(node.parentNode.children);;
+    return arr.filter((item)=>{return item!==node});
+}
+
+dom.next=(node)=>{
+    return node.nextElementSibling;
+}
+
+dom.previous=(node)=>{
+    return node.previousElementSibling;
+}
+
+dom.each=(nodes,fn)=>{
+    for(let i in nodes){
+        fn(nodes[i]);
+    }
+}
+
+dom.index=(node)=>{
+    let arr=Array.from(node.parentNode.children);
+    let num;
+    arr.filter((item,index)=>{if(item===node){num=index;}});
+    return num;
+}

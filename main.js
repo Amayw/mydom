@@ -67,3 +67,33 @@ dom.on(container,'click',fn);
 
 //off的用法
 // dom.off(container,'click',fn);
+
+//find的用法
+console.log(dom.find('ul li'));
+console.log(dom.find('#test'));
+console.log(dom.find('.test'));
+const name=dom.find('.test');
+
+//findAll的用法
+console.log(dom.findAll('.hong li'));
+
+//parent的用法
+console.log(dom.parent(name));
+
+//children的用法
+console.log(dom.children(dom.find('ul')));
+
+// siblings的用法
+console.log(dom.siblings(name));
+
+//next的用法
+console.log(dom.next('.lan'));
+
+//previous的用法
+console.log(dom.previous(dom.find('.lan')));
+
+//each的用法
+dom.each(dom.children(dom.find('.hong')),(n)=>{dom.style(n,{color:'red'})});
+
+//index的用法
+// console.log(dom.index(name));
